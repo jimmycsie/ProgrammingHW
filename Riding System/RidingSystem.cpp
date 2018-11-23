@@ -52,7 +52,7 @@ class Passenger : public Entity{
 	public:
 		Passenger();
 		Passenger(const Passenger& p);
-		Passenger(const string& phone,string& tag);  //format of tag (...,...,...)  constructure 註冊新成員 
+		Passenger(const string& phone,string& tag);  //format of tag (...,...,...)  constructure 註冊新成員  
         char getName(int i) const;
         string& getName();
 		vector<string> getTag() const;
