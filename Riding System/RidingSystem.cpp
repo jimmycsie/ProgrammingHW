@@ -52,7 +52,7 @@ class Passenger : public Entity{
 	public:
 		Passenger();
 		Passenger(const Passenger& p);
-		Passenger(const string& phone,string& tag);  //format of tag (...,...,...)  constructure µù¥U·s¦¨­û 
+		Passenger(const string& phone,string& tag);  //format of tag (...,...,...)  constructure è¨»å†Šæ–°æˆå“¡ 
         char getName(int i) const;
         string& getName();
 		vector<string> getTag() const;
@@ -75,7 +75,7 @@ class Car : public Entity{
 	private:
 	    string name;
 	    int tagWithP;       //tag count same with passenger, note that the number is correct if and only if there is passenger on the car.
-		short time;         // minute mean time  ex:13ÂI15¤À ¬°  13*60+15=795 
+		short time;         // minute mean time  ex:13é»15åˆ† ç‚º  13*60+15=795 
 	    char direction;      //Halt for H, East for E, West for W, South for S, North for N
 	    short speed;         //1 for regular car, 2 for luxury car
 	    int GetScoreCount;
@@ -86,7 +86,7 @@ class Car : public Entity{
 	public:
 	    Car();	    
 	    Car(const Car& c);
-	    Car(const string& name,string& tag,char isRegular); //format of tag (...,...,...)  constructure µù¥U·s¨®¤l 
+	    Car(const string& name,string& tag,char isRegular); //format of tag (...,...,...)  constructure è¨»å†Šæ–°è»Šå­ 
 	    char getName(int i) const;
 	    string& getName() ;
 	    string& getP() ;
@@ -158,18 +158,18 @@ int main(){
 	int idealScore=0,tagScore=0,disWeighted=0,tagCount=0;
 	cin>>Max_dis>>Rintercept>>Rslope>>Lintercept>>Lslope
 	   >>idealScore>>tagScore>>disWeighted>>tagCount;
-	string tag;  //¨ä¹ê«á­±¨S¥Î¨ì 
+	string tag;  //å…¶å¯¦å¾Œé¢æ²’ç”¨åˆ° 
 	cin.ignore(1);     //ignore '\0'
 	std::getline(std::cin,tag);
     tag="";
     
-    //--------------------variable and data structures--------------- 
+    //--------------------variable and data structures----------------
 	string command,characteristic,phone,name,time,location;
 	char LorR='\0',direction='\0';
 	int sum=0;
-	Passenger* Pmember;   //·s¼W·|­û
+	Passenger* Pmember;   //æ–°å¢æœƒå“¡
 	Passenger* SearchP = nullptr; 
-	Car* Cmember;  //·s¼W¨®¤l 
+	Car* Cmember;  //æ–°å¢è»Šå­ 
 	Car* SearchC = nullptr;
 	vector<Car*> allCarInVector;
 	vector<Passenger*> allPInVector;
@@ -178,8 +178,8 @@ int main(){
 	//---------------------------------------------------------------
 	
 	while(std::getline(std::cin,command)){        //[6][7] are the command
-		if(command[6]=='N' && command[7]=='P'){  //·s­¼«Èµù¥U  
-		    //±ø¥ó:¨S¦³µù¥U¹L 
+		if(command[6]=='N' && command[7]=='P'){  //æ–°ä¹˜å®¢è¨»å†Š  
+		    //æ¢ä»¶:æ²’æœ‰è¨»å†Šé 
         	phone=command.substr(9,10);
             SearchP=allPassenger.search(phone);
 		    if(SearchP!=nullptr)
@@ -189,8 +189,8 @@ int main(){
             allPassenger.add(*Pmember);
             SearchP=nullptr;
 		}
-		else if(command[6]=='N' && command[7]=='C'){  //·s¨®¤lµù¥U 
-		    //±ø¥ó:¨S¦³µù¥U¹L 
+		else if(command[6]=='N' && command[7]=='C'){  //æ–°è»Šå­è¨»å†Š 
+		    //æ¢ä»¶:æ²’æœ‰è¨»å†Šé 
         	name=command.substr(9,6);
         	SearchC=allCar.search(name);
 		    if(SearchC!=nullptr)
@@ -202,8 +202,8 @@ int main(){
             allCar.add(*Cmember);
             SearchC=nullptr;
 		}
-		else if(command[6]=='O' && command[7]=='C'){   //¨®¤l¤W½u 
-		    //±ø¥ó:¤wµù¥U¹L ©|¥¼¤W½u
+		else if(command[6]=='O' && command[7]=='C'){   //è»Šå­ä¸Šç·š 
+		    //æ¢ä»¶:å·²è¨»å†Šé å°šæœªä¸Šç·š
 			name=command.substr(9,6);
 			SearchC=allCar.search(name);
 		    if(SearchC==nullptr || SearchC->getOnline()==true)
@@ -219,8 +219,8 @@ int main(){
         	    emptyL.add(*SearchC);
         	SearchC=nullptr;
 		}
-		else if(command[6]=='O' && command[7]=='P'){   //­¼«È¤W½u 
-			//±ø¥ó: ¤wµù¥U¹L ©|¥¼¤W½u
+		else if(command[6]=='O' && command[7]=='P'){   //ä¹˜å®¢ä¸Šç·š 
+			//æ¢ä»¶: å·²è¨»å†Šé å°šæœªä¸Šç·š
 			phone=command.substr(9,10);
             SearchP=allPassenger.search(phone);
 		    if(SearchP==nullptr || SearchP->getOnline()==true)
@@ -247,9 +247,9 @@ int main(){
 			    SearchP->offline();
 			SearchP=nullptr;
 		}	
-		else if(command[6]=='C' && command[7]=='P'){   //¨®¤l±µ¨ì­¼«È 
-			//±ø¥ó: ¨®¤l->¤wµù¥U¹L ¤W½u¤¤ ªA°È¤¤ª¬ºA ¨®¤WµL­¼«È
-			//      ­¼«È->¤wµù¥U¹L ¤W½u¤¤ µ¥«İ¤¤
+		else if(command[6]=='C' && command[7]=='P'){   //è»Šå­æ¥åˆ°ä¹˜å®¢ 
+			//æ¢ä»¶: è»Šå­->å·²è¨»å†Šé ä¸Šç·šä¸­ æœå‹™ä¸­ç‹€æ…‹ è»Šä¸Šç„¡ä¹˜å®¢
+			//      ä¹˜å®¢->å·²è¨»å†Šé ä¸Šç·šä¸­ ç­‰å¾…ä¸­
 			name=command.substr(9,6);
 			SearchC=allCar.search(name);  
 			if(SearchC!=nullptr)
@@ -266,8 +266,8 @@ int main(){
 			SearchC=nullptr;
 			SearchP=nullptr;
 		}
-		else if(command[6]=='A' && command[7]=='D'){   //©è¹F¥Øªº¦a 
-	        //¨®¤l¤wµù¥U¹L ªA°È¤¤ ¸ü«È¤¤
+		else if(command[6]=='A' && command[7]=='D'){   //æŠµé”ç›®çš„åœ° 
+	        //è»Šå­å·²è¨»å†Šé æœå‹™ä¸­ è¼‰å®¢ä¸­
 			name=command.substr(9,6);
 			SearchC=allCar.search(name);
 		    if(SearchC==nullptr || SearchC->getOnline()==false || SearchC->getService()==false || SearchC->getOnboard()==false)
@@ -297,8 +297,8 @@ int main(){
 			SearchC=nullptr;
 			SearchP=nullptr;   
 		} 
-		else if(command[6]=='E' && command[7]=='C'){   //ªÅ¨®§ïÅÜ²¾°Ê¤è¦V
-		    //±ø¥ó: ¤wµù¥U¹L ¤W½u ªÅ¨®
+		else if(command[6]=='E' && command[7]=='C'){   //ç©ºè»Šæ”¹è®Šç§»å‹•æ–¹å‘
+		    //æ¢ä»¶: å·²è¨»å†Šé ä¸Šç·š ç©ºè»Š
 			name=command.substr(9,6);
 			SearchC=allCar.search(name);
 		    if(SearchC==nullptr || SearchC->getOnline()==false || SearchC->getService()==true)
@@ -308,9 +308,9 @@ int main(){
 			SearchC->ChangeDir(time, direction);
 			SearchC=nullptr;
 	    }
-		else if(command[6]=='L' && command[7]=='C'){   //¨®¤lÂ÷½u 
+		else if(command[6]=='L' && command[7]=='C'){   //è»Šå­é›¢ç·š 
 			name=command.substr(9,6);
-			SearchC=emptyR.search(name);     //¨®¤l¤W½u¥B¬°¥¼ªA°Èª¬ºA¤~§äªº¨ì 
+			SearchC=emptyR.search(name);     //è»Šå­ä¸Šç·šä¸”ç‚ºæœªæœå‹™ç‹€æ…‹æ‰æ‰¾çš„åˆ° 
 			if(SearchC==nullptr){
 				SearchC=emptyL.search(name);
 			    if(SearchC==nullptr){
@@ -324,7 +324,7 @@ int main(){
 			SearchC->offline();
 			SearchC=nullptr;
 		}
-		else if(command[6]=='S' && command[7]=='C'){   //¬d¸ß¨®¤l 
+		else if(command[6]=='S' && command[7]=='C'){   //æŸ¥è©¢è»Šå­ 
 	        name=command.substr(9,6);
 	        time=command.substr(0,5);
 	        SearchC=allCar.search(name);
@@ -334,7 +334,7 @@ int main(){
 			    cout<<name<<": no registration!"<<"\n";
 		    SearchC=nullptr;
 		} 
-		else if(command[6]=='S' && command[7]=='P'){   //¬d¸ß­¼«È 
+		else if(command[6]=='S' && command[7]=='P'){   //æŸ¥è©¢ä¹˜å®¢ 
 	        phone=command.substr(9,10);
 	        SearchP=allPassenger.search(phone);
 		    if(SearchP!=nullptr)
@@ -343,10 +343,10 @@ int main(){
 			    cout<<phone<<": no registration!"<<"\n";
 		    SearchP=nullptr;
 		} 
-		else if(command[6]=='S' && command[7]=='R'){   //¬d¸ß¥­¥x¦¬¯q 
+		else if(command[6]=='S' && command[7]=='R'){   //æŸ¥è©¢å¹³å°æ”¶ç›Š 
 			cout<<sum<<"\n";
 		}
-		else if(command[6]=='Z' && command[7]=='Z'){   //¨t²Î·í¾÷ 
+		else if(command[6]=='Z' && command[7]=='Z'){   //ç³»çµ±ç•¶æ©Ÿ 
 		    allCarInVector=allCar.traversal();
 		    allPInVector=allPassenger.traversal();
 			for(int i=0;i<allCarInVector.size();i++)
@@ -360,7 +360,7 @@ int main(){
 		command="        ";
 	}
 	
-	//°O±odelete 
+	//è¨˜å¾—delete 
 	return 0;
 }
 
@@ -811,8 +811,8 @@ void Bag<TypeName>::add(TypeName& NewEntry){
 		if(get==false){
 			newNode =  new Node<TypeName>(NewEntry,i);
 			newNode->parent = ptr;
-			ptr->children.push_back(newNode);               //¦bvector³Ì«á­±push_back 
-	        ptr = ptr->children[ptr->children.size()-1];   //±Nptr«ü¦V¸Ónode 
+			ptr->children.push_back(newNode);               //åœ¨vectoræœ€å¾Œé¢push_back 
+	        ptr = ptr->children[ptr->children.size()-1];   //å°‡ptræŒ‡å‘è©²node 
 		}		
 	    get=false;
 	    i++;
@@ -1018,14 +1018,14 @@ satisfy grading(Passenger* caller, string& time, string& location, int tagCount,
 	distance = abs(x_co - caller->x_coordinate) + abs(y_co - caller->y_coordinate);
         copydis=distance;
 
-	if(waitingTime>10 && waitingTime<=20)   //µ¥«İ®É¶¡¦©¤À 
+	if(waitingTime>10 && waitingTime<=20)   //ç­‰å¾…æ™‚é–“æ‰£åˆ† 
     	p.score--;
     else if(waitingTime>20){
     	p.score -= 2;
     	p.money = -1;
 	}
 
-    if(isRegular==true){                    //¸ü°e®É¶¡¦©¤À 
+    if(isRegular==true){                    //è¼‰é€æ™‚é–“æ‰£åˆ† 
     	if(routeTime>distance*2 && routeTime<=distance*3)
     	    p.score--;
     	else if(routeTime>distance*3){
@@ -1042,7 +1042,7 @@ satisfy grading(Passenger* caller, string& time, string& location, int tagCount,
     		p.money = -1;
 		}	    
 	}
-	p.score += tagCount;     //¼ĞÅÒ¬Û¦P¥[¤À
+	p.score += tagCount;     //æ¨™ç±¤ç›¸åŒåŠ åˆ†
 	if(p.score>=5)
 	    p.score=5;
 	else if(p.score<=1)
