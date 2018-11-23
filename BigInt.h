@@ -1,7 +1,7 @@
 class BigInt{
 	
     private:
-        string name;
+	string name;
 	string integer;
 	    	    
     public:
