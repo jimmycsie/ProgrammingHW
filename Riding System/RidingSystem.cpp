@@ -146,7 +146,7 @@ matchUp* match(Car* driver, Passenger* caller, string& time,
 Car* applyCar(Bag<Car>& emptyLorR, Passenger* calling, string& time, 
               int Max_dis, int idealScore, int tagScore, int disWeighted);
 satisfy grading(Passenger* caller, string& time, string& location, int tagCount, bool isRegular);
-//---------------------------------------------------------------
+//----------------------------------------------------------------
 
 int main(){
 	//storing four data structure. 
