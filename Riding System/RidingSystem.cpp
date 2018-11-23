@@ -140,7 +140,7 @@ class Bag{               //sorting by string. Hence TypeName must have getName()
 }; 
 
 
-//------------------global function ----------------------------
+//------------------global function -----------------------------
 matchUp* match(Car* driver, Passenger* caller, string& time,
                int Max_dis, int idealScore, int tagScore, int disWeighted);
 Car* applyCar(Bag<Car>& emptyLorR, Passenger* calling, string& time, 
