@@ -27,7 +27,7 @@ class BigInt{
 		const BigInt operator*(const char n) const;            //BigInt multiply a single digit
 		const BigInt& operator*=(BigInt w);                    //BigInt multiply BigInt
 		const BigInt operator*(const BigInt& w) const;         //BigInt multiply BigInt
-    		const BigInt& operator/=(BigInt w);                    //BigInt divide BigInt, take the integer onl
+    		const BigInt& operator/=(BigInt w);                    //BigInt divide BigInt, take the integer only
 		const BigInt operator/(const BigInt&  w) const;        //BigInt divide BigInt, take the integer only
  		const BigInt operator%(const BigInt w) const;          //BigInt divide BigInt, take the remainder only
 		const BigInt square() const;                           //the square of BigInt
